@@ -38,3 +38,5 @@ Protection:
   Containerblocks: 192,901,250,246,188,277,2491,207,900,181,251,3120,3131,227,751,233,2050,183,2002,30208,3893,223
   #Defines trading blocks that are allowed to use in every region (same as enderchest)
   UseBlocks: '255'
+  #Block mod placements in regions
+  BlockModPlacment: true

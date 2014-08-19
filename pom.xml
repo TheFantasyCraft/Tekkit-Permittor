@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>thomas15v</groupId>
   <artifactId>Tekkit_little_Permittor</artifactId>
-  <version>1.5.2</version>
+  <version>1.5.4</version>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <resources>
@@ -28,17 +28,37 @@
 			<id>sk89q-repo</id>
 			<url>http://maven.sk89q.com/repo/</url>
 		</repository>
+        <repository>
+            <id>central</id>
+            <url>file://E:\Documenten\mavenbukgetmaker</url>
+         </repository>
   </repositories>
   <dependencies>
-  	<dependency>
-  		<groupId>org.bukkit</groupId>
-  		<artifactId>bukkit</artifactId>
-  		<version>1.4.7-R1.1-SNAPSHOT</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>com.sk89q</groupId>
-  		<artifactId>worldguard</artifactId>
-  		<version>LATEST</version>
-  	</dependency>
+
+        <dependency>
+            <groupId>org.bukkit</groupId>
+            <artifactId>craftbukkit</artifactId>
+            <version>1.4.7-R1.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sk89q</groupId>
+            <artifactId>worldguard</artifactId>
+            <version>LATEST</version>
+        </dependency>
+      <dependency>
+          <groupId>com.Acrobot</groupId>
+          <artifactId>ChestShop</artifactId>
+          <version>1.0.0</version>
+          <scope>system</scope>
+          <systemPath>${basedir}/lib/chestshop.jar</systemPath>
+      </dependency>
   </dependencies>
+
+
+    <distributionManagement>
+        <repository>
+            <id>dropbox</id>
+            <url>file:///C:\Users\thomas\Dropbox\mvn</url>
+        </repository>
+    </distributionManagement>
 </project>

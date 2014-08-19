@@ -1,5 +1,8 @@
 package thomas15v.events;
 
+import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
+import com.sk89q.worldguard.protection.ApplicableRegionSet;
+import com.sk89q.worldguard.protection.flags.DefaultFlag;
 import org.bukkit.ChatColor;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -11,14 +14,9 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-
-import thomas15v.configuration.WorldGuardConfig;
 import thomas15v.configuration.Manager;
+import thomas15v.configuration.WorldGuardConfig;
 import thomas15v.other.Functions;
-
-import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
-import com.sk89q.worldguard.protection.ApplicableRegionSet;
-import com.sk89q.worldguard.protection.flags.DefaultFlag;
 
 public class Worldguardevents implements Listener {
 	
@@ -33,7 +31,6 @@ public class Worldguardevents implements Listener {
 	@EventHandler(priority = EventPriority.MONITOR)
 	void PlayerInteractEvent(PlayerInteractEvent event){
 		Player player = event.getPlayer();
-		
 		WorldGuardConfig mgr = Manager.getworldguardConfig();
 		
 		if (event.hasItem()){
@@ -88,8 +85,11 @@ public class Worldguardevents implements Listener {
 		Block block = event.getBlock();
 		ApplicableRegionSet region =  worldguard.getRegionManager(block.getWorld()).getApplicableRegions(block.getLocation());
 		Boolean inarea =  region.iterator().hasNext();
-		if (inarea && (event.getPlayer().getName().startsWith("[") || event.getPlayer().getName().endsWith("]"))){
-			event.setCancelled(true);			
+		if (inarea &&(event.getPlayer().getName().startsWith("[") || event.getPlayer().getName().endsWith("]"))){
+            if (mgr.blockmodplacement)
+			    event.setCancelled(true);
+            else
+                event.setCancelled(false);
 		}		
 		
 		if (inarea && Functions.InBlockInfoArray(mgr.alwaysblockedblocks, block)){
@@ -101,10 +101,14 @@ public class Worldguardevents implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void BlockBreakEvent(BlockBreakEvent event){
 		Block block = event.getBlock();
+        WorldGuardConfig mgr = Manager.getworldguardConfig();
 		ApplicableRegionSet region =  worldguard.getRegionManager(block.getWorld()).getApplicableRegions(block.getLocation());
 		Boolean inarea =  region.iterator().hasNext();
 		if (inarea && (event.getPlayer().getName().startsWith("[") || event.getPlayer().getName().endsWith("]") )){
-			event.setCancelled(true);			
+            if (mgr.blockmodplacement)
+                event.setCancelled(true);
+            else
+                event.setCancelled(false);
 		}		
 		
 	}	

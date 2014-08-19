@@ -1,17 +1,7 @@
 package thomas15v;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.logging.Logger;
-
-import org.bukkit.ChatColor;
-import org.bukkit.Effect;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.World;
+import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
+import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -21,13 +11,13 @@ import org.bukkit.material.MaterialData;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.mcstats.Metrics;
-
 import thomas15v.configuration.Manager;
-import thomas15v.events.Events;
+import thomas15v.events.XPEvents;
 import thomas15v.events.WarnAdminevents;
 import thomas15v.events.Worldguardevents;
 
-import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
+import java.io.*;
+import java.util.logging.Logger;
 
 public class TekkitPermittor extends JavaPlugin {
 
@@ -44,7 +34,9 @@ public class TekkitPermittor extends JavaPlugin {
 		logger = getLogger();
 		loadConfiguration();
 		loadmetrics();
-		
+
+        //Test events don't enable them please :(
+        //getServer().getPluginManager().registerEvents(new chestshopfix(), this);
 		//Enchantmentbanner enchantmentbanner = new Enchantmentbanner();
 		//getServer().getPluginManager().registerEvents(enchantmentbanner, this);
 	}
@@ -88,7 +80,7 @@ public class TekkitPermittor extends JavaPlugin {
 	}
 	
 	public void launchevents(){
-		Events Events = new Events();		
+		XPEvents Events = new XPEvents();
 		getServer().getPluginManager().registerEvents(Events, this);
 	}
 	

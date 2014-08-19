@@ -1,6 +1,6 @@
 name: Tekkit Permittor
 main: thomas15v.TekkitPermittor
-version: 1.5.2
+version: 1.5.4
 commands:
   tep:
     description: Tekkit Permittor adminstration command

@@ -1,16 +1,15 @@
 package thomas15v.configuration;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-
 import thomas15v.info.BlockInfo;
 import thomas15v.info.ModEnchantmentInfo;
 import thomas15v.other.Functions;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Manager {
 
@@ -82,7 +81,8 @@ public class Manager {
 		    	worldGuardConfig.Containerblocks = Functions.StringToBlockInfo(Config.getString("Protection.Containerblocks"));
 		    	worldGuardConfig.alwaysblockedblocks = Functions.StringToBlockInfo(Config.getString("Protection.alwaysblockedblocks"));
 		    	worldGuardConfig.UseBlocks = Functions.StringToBlockInfo(Config.getString("Protection.UseBlocks"));
-		    	
+		    	worldGuardConfig.blockmodplacement = Config.getBoolean("Protection.BlockModPlacment");
+
 		    	eventConfig = new EventConfig();
 		    	
 		    	eventConfig.noplaceblock = Functions.StringToBlockInfo(Config.getString("block-Mod-block-place.blocks"));

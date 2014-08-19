@@ -1,8 +1,5 @@
 package thomas15v.events;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -12,20 +9,18 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.player.PlayerExpChangeEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerKickEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
-
+import org.bukkit.event.player.*;
 import thomas15v.TekkitPermittor;
 import thomas15v.configuration.EventConfig;
 import thomas15v.configuration.Manager;
 import thomas15v.info.BlockidPlayerlocation;
 import thomas15v.other.Functions;
 
+import java.util.HashMap;
+import java.util.Map;
 
-public class Events implements Listener {
+
+public class XPEvents implements Listener {
 	
 	public Map<String,Location> OnePlayerBlocksUsed = new HashMap<String,Location>();
 	public Map<String,BlockidPlayerlocation> playerusingblock = new HashMap<String,BlockidPlayerlocation>();
@@ -115,7 +110,7 @@ public class Events implements Listener {
 	public void PlayerKickEvent(PlayerKickEvent event){
 		removeplayeroutlist(event.getPlayer());
 	}
-	
+
 	void removeplayeroutlist(Player player){
 		if (OnePlayerBlocksUsed.containsKey(player.getName())) OnePlayerBlocksUsed.remove(player);
 		if (playerusingblock.containsKey(player.getName())) playerusingblock.remove(player.getName());

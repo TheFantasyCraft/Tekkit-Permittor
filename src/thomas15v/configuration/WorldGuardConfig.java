@@ -9,4 +9,5 @@ public class WorldGuardConfig {
 	public BlockInfo[] alwaysblockedblocks;
 	public BlockInfo[] Containerblocks;
 	public BlockInfo[] UseBlocks;
+    public boolean blockmodplacement;
 }
